@@ -63,4 +63,19 @@ public class Choice {
                 }
         }
     }
+
+    public String yesOrNo() {
+        String yOrN = scnr.next();
+        while (true) {
+            if (yOrN.equals("y")) {
+                    break;
+            } else if (yOrN.equals("n")) {
+                    break;
+            }
+            System.out.println("Please only input y or n.");
+            yOrN = scnr.next();
+        }
+        return yOrN;
+    }
 }
+
