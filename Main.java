@@ -3,13 +3,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        //variables/objects used interimittently throughout.
         Scanner in = new Scanner(System.in);
         Random random = new Random();
         Choice chooser = new Choice(in);
-        //For multiple choice loops, ensure a proper option is picked. For ease of interactivity, it will always be false. Break statements are used to exit loops, as a "correct your spelling" prints to the console if none of the breaks are triggered
-        boolean properChoice = false;
-
-
+        String yOrN;
 
         //Character conditions
         Player player = new Player();
@@ -162,9 +160,9 @@ public class Main {
         
         System.out.println("Was it a flower or a fox?: ");
         String[] sachelPattern = {"flower", "fox"};
-        int sachelChoice = chooser.getChoice(sachelPattern);
+        int satchelChoice = chooser.getChoice(sachelPattern);
 
-        System.out.println("Of course. Everyone loves a good " + sachelPattern[sachelChoice] + ". " + player.getName() + "'ll have to check at one of the upcoming taverns if anyone lost it.");
+        System.out.println("Of course. Everyone loves a good " + sachelPattern[satchelChoice] + ". " + player.getName() + "'ll have to check at one of the upcoming taverns if anyone lost it.");
         System.out.println("Speaking of, there's a few coming up isn't there? Yes, there they are just over the ridge. 'Finally, somewhere to rest my feet!'");
 
         System.out.println(player.getName() + " took a moment to reflect on " + player.getObj() + " condition.");
@@ -225,16 +223,9 @@ public class Main {
         System.out.println("Musing to " + player.getObj() + "self, " + player.getName() + " came to the conclusion, 'I probably could go for something. I have enough coins certainly.'");
         if (player.getHungry()) {
                 System.out.println("'Should I get some food?' (y/n): ");
-                while (properChoice == false) {
-                        if (in.next().equals("y")) {
-                                break;
-                        } else if (in.next().equals("n")) {
-                                break;
-                        }
-                        System.out.println("Please only input y or n.");
-                }
+                yOrN = chooser.yesOrNo();
 
-                if (in.next().equals("n")) {
+                if (yOrN.equals("n")) {
                         System.out.println("'Hmmm, no. I'm not that hungry. I can stand to just eat my rations.'");
                 } else {
                         gold -= foodPrice;
@@ -270,16 +261,9 @@ public class Main {
 
         if (player.getThirsty()) {
             System.out.println("'Should I get something to drink?' (y/n): ");
-                while (properChoice == false) {
-                        if (in.next().equals("y")) {
-                                break;
-                        } else if (in.next().equals("n")) {
-                                break;
-                        }
-                        System.out.println("Please only input y or n.");
-                }
+                yOrN = chooser.yesOrNo();
 
-                if (in.next().equals("n")) {
+                if (yOrN.equals("n")) {
                         System.out.println("'There's still plenty of drink in my canteen, best to save my coin for a shop.'");
                 } else {
                         gold -= drinkPrice;
@@ -306,11 +290,73 @@ public class Main {
                            case 2:
                                 System.out.println("'So, you speak highly of your drinks, what do you serve that makes your ale so much better?' " + player.getName() + " asked, as an almost smug look took over the establishment's owner.");
                                 System.out.println("'The simple answer is, we don't.'");
-                                System.out.println("'I beg your pardon?' " + player.getName() + " responded, quite a bit taken aback by a frankly outlandish notion in these parts, before recovering " + player.getPoss() + "elf.");
+                                System.out.println("'I beg your pardon?' " + player.getName() + " responded, quite a bit taken aback by a frankly outlandish notion in these parts, before recovering " + player.getObj() + "elf.");
                                 System.out.println("'We serve wine, a good year too. Tell me how you enjoy it once you finish,' the owner said as he poured the glass and passed it along. The glass had a nice design of an apple tree.");
                                 player.drink();
+                                System.out.println("Taking a long sip, " + player.getSubj() + " had nothing to say except 'very well brewed.");
                         }
                 }
         }
+
+
+
+        System.out.println("~ ~ ~ Chapter 2 ~ ~ ~");
+
+        System.out.println(player.getName() + " took a good while in " + taverns[tavernChoice] + ", resting for the upcoming travels. Eventually " + player.getSubj() + " got up and simply walked out the door, off to the next leg of the adventure.");
+        System.out.println("Unfortunately, the nature of time is that it passes, whether you need it too or not. The morning sun had reached it's apex and become that of the noon sky. No more time for dilly dallying."); 
+        System.out.println("If the goal is reaching the heart and discovering what it is, then best not to wait too long.\n");
+
+        System.out.println("Fearless as ever, the journey began again. Step by step, fallen branches crunched underfoot, the verdant green of the trees a welcome shade from a sun doing its best to still shine through.");
+        System.out.println("Upon the forest floor it created a patchwork design of shadow and light, almost like a stained glass painting.");
+        System.out.println("Often " + player.getName() + " would come to contact with a strange stream that seemed to wind and circle back on itself noticably, based simply on how many times it crossed " + player.getPoss() + " path. It crossed " + player.getName() + "'s mind that perhaps there's more to it.");
+        System.out.println("Will you peer closer into the water? (y/n)");
+        yOrN = chooser.yesOrNo();
+        if (yOrN.equals("y")) {
+                System.out.println("Curiousity is a wonderful thing, but it's rewards can be... interesting. The water was slightly murky at it's bottom, but beyond that was something concerning.");
+                System.out.println("Where are the fish?");
+                if (player.getThirsty()) {
+                        System.out.println("Despite the concern creeping into " + player.getPoss() + " mind, it was undeniable the thirst that plagued " + player.getObj() + ". Surely it would be fine to quench the thirst with this river, certainly better here at the outskirts.");
+                        System.out.println("Partake in the stream? (y/n)");
+                        yOrN = chooser.yesOrNo();
+                        if (yOrN.equals("y")) {
+                                System.out.println("Cupping " + player.getPoss() + " hands, " + player.getName() + " brought the water to " + player.getPoss() + " mouth.");
+                                System.out.println("The water tasted peculiarly clean of dirt, yet the faintest hint of iron is there. Looking closer, " + player.getName() + " noticed a slight pink hue to the... 'This water is not clean.'");
+                                player.drink();
+                        } else {
+                                System.out.println("Mystic forest rivers often bear curses. This one has already shown peculiarities, best not to risk it.");
+                        }
+                }
+        } else {
+                System.out.println("It's a river in a mystical forest, looking into it will do nothing but disquiet you.");
+        }
+
+        System.out.println("\n");
+        System.out.println("Keeping pace onwards, hours passed. Yet, in the distance a hooded figure could be seen. " + player.getName() + " kept on guard, knowing the risk of a stranger in this setting.");
+        System.out.println("As " + player.getName() + " approached, the figure didn't move. They simply waited for " + player.getName() + " to approach.");
+        System.out.println("'Greetings stranger, its an odd place you've chosen to stand. Even as a foreigner I know the tales of these woods. Are you lost, do you need help out?'");
+        System.out.println("As " + player.getSubj() + " spoke to the hooded figure, " + player.getSubj() + " took the time to look closer. He was frail, and though the hood shrouded most of the face the mouth could be seen clearly.");
+        System.out.println("It looked sickly, pale and cracked, though curled in a smile. In an aged voice he spoke.");
+        System.out.println("'Lost? No... Or perhaps I am? I suppose it depends on how one wishes to define, 'lost'. I would prefer to define myself as merely... taking a parallel path.'");
+        System.out.println("He raised his head as he spoke, revealing empty eye sockets and hollow cheeks. With his toothy grin, it looked nearly like a skull if not for the nose still attached.");
+        System.out.println("Unphased, " + player.getName() + " simply responded, 'If that's what you would prefer. Tell me, how long have you been in these woods?'");
+        System.out.println("'Oh, not too long. Though I suppose it's easy to lose track of time when one's having fun! Say, have you seen the purple flowers that grow near the water further in?'");
+        System.out.println("'It's my first visit into these woods, I can't say I have.'");
+        System.out.println("'That's alright. I haven't either.' He gave a hearty chuckle that seemed to hurt him as his laughs turned to bloodied coughs.\n");
+        
+        System.out.println("It had become clear to " + player.getName() + " that this was one of the one's who'd gone mad wandering too long in the forest. Of course the stories neglected to mention the removal of the eyes. Because why would they mention important details like that?");
+        System.out.println("'Sir, I think you need to leave this place, immediately.'");
+        System.out.println("'Oh, but I'm still searching!' 'Searching?' 'Why yes, I lost some things, there was something quite beautiful to them...'");
+        System.out.println("Thinking a moment, an idea struck " + player.getName() + ". 'Could this be one of the things you're searching for?");
+        System.out.println("As " + player.getSubj() + " pulled out the satchel they found so many hours before, the old man held out his hands to grasp it.");
+        
+        if (satchelChoice == 0) {
+                System.out.println("'...No. No this is not it. You've already passed Miles on your journey I'm afraid to say, you will not find what I seek for now.'");
+        } else {
+                System.out.println("'Ah, so you've found it! Such a beautiful thing, a two tailed fox. So much nicer than a nine tailed one wouldn't you say? Too cluttered. But there's a genius to simply, two.'");
+                System.out.println("'So that's what it was meant to be?' " + player.getName() + " asked, intrigued about the original design of the faded artwork.");
+                System.out.println("'Indeed. The piece is only a mimicry though, I could never truly replicate the soul of the original no matter how hard I tried. Though I like to think I gave it one of its own. Thank you " + player.getName() + ", I've waited for someone to bring the right gift for so very long.'");
+                System.out.println("'You're welcome stranger, it's an honor to help... How do you know my-'");
+        }
+        System.out.println("With that the old man left chuckling again. Whatever lives in this forest is certainly strange, the forces definitively unnatural. But one thing stays true, where there is day there is night. It's time to set up camp.");
     }
 }
