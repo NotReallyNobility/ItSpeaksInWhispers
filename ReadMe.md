@@ -24,53 +24,49 @@ To run the program, look in the top right for a play arrow, then drag the termin
 
 
 ## Features
+It currently holds three classes outside of Main.
+1. Choice: It stores methods for printing out and returning variables related to the multiple choices in the program.
 
+2. Character: The basis for a character, including basic info as if they're alive, injured, hungry, or thirsty. It can also alter and get those values. It holds two constructors, one where the values can be shifted as desired, and an empty constructor where the character is fully healthy.
+
+3. Player: An extension of the Character class adding the variables for the players chosen gender as well as their name. The gender choice can be set but not retrieved. The players name and pronouns are able to be returned as strings through "get" methods. "printCondition()" is used to print the players conditions, stating if they're hungry, thirsty, and/or injured.
 
 ### Prolouge
 
-4 methods
-    int getChoice(String[] list, Scanner temp) at line 8. Allows the user to input a number to choose from a list of items, returning an int to serve as the index variable for that list.
+If statement for if inputted age is too low at line 34
 
-    int getChoice(String[] list, Scanner temp, boolean hidden) at line 25. An overload of the previous method, for when there's a secret final choice.
+If else if for age flavor text determined by character age at line 47
 
-    printOptions(String[] list, boolean hidden) at line 55. It is used in the previous two methods to print the options the user can choose, hiding the final option if hidden is true.
-
-    printCondition(boolean hungry, boolean thirsty, boolean injured) at line 70. It's used during points where the character assesses their condition, working as a way to remind the player how they're doing during points that condition can change.
-
-
-
-Related arrays relating to the characters gender at lines 111 through 113, and line 116
-
-calls the getChoice method at line 118
-
-If statement for if inputted age is too low at line 127
-
-If else if for age flavor text determined by character age at line 140
-
-calls the overload of getChoice at line 166 to get the creature's name, with the true name being a hidden fourth choice
+calls the overload of getChoice at line 73 to get the creature's name, with the true name being a hidden fourth choice
 
 
 
 ### Chapter 1
 Chapter 1 has the character go to a tavern and rest, possibly drinking or eating.
 
-if else if loop for getting the foes bested within range of 15 and 20 at line 218
+if else if loop for getting the foes bested within range of 15 and 20 at line 147
 
-calls getChoice at line 250 to present the possible tavern choices
+calls getChoice at line 179 to present the possible tavern choices
 
-switch case statement to get the proper greeting for each tavern at line 253 and 271
+switch case statement to get the proper greeting for each tavern at line 182 and 200
 
-A pair switch case statements at lines 310 and line 355 for if the character eats or drinks.
+A pair of yes or no question using the yesOrNO() Choice method at lines 226 and 264
+
+A pair switch case statements at lines 232 and line 270 for if the character eats or drinks.
 
 Though the player does not alter the contents of the arrays, they do alter which part of the array is used within the game.
 
+### Chapter 2
+Chapter 2 has the character wander through the forest after leaving the bar. They encounter a river which they can choose to peer into. If they didn't drink at the bar, they can drink from the water.
 
+After this they encounter an eyeless man who's dialog is different based on which satchel design they chose, leading them to the idea that there is a right choice.
 
 
 
 
 ## Future Improvements
 
-The game will have four alternative chapters possible in one run, one of which being the final ending, accessible only by learning secrets hidden in the other three endings. The blinded fox shall speak the creature's true name. The dismembered echidna knows the creature's true role. The cracked egg knows the creature's true goal.
+The game will have multiple endings based on how many of the secrets they unlock, which should grow progressively more difficult. If possible, it would be nice to make the text output at a somewhat steadier pace, easier to read and keep track of.
+
 
 The creature knows you're there.
