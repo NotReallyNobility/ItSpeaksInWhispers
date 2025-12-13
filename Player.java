@@ -1,8 +1,8 @@
-public class Player extends Character {
+public class Player extends Character {    
     private String name;
-    private String[] subj = {"he", "she", "they"};
-    private String[] obj = {"him", "her", "them"};
-    private String[] poss = {"his", "hers", "theirs"};
+    private final String[] subj = {"he", "she", "they"};
+    private final String[] obj = {"him", "her", "them"};
+    private final String[] poss = {"his", "hers", "theirs"};
     private int genderChoice;
     
 
@@ -36,21 +36,22 @@ public class Player extends Character {
         return poss[genderChoice];
     }
 
+    @Override
     public void printCondition() {
         if (hungry && thirsty && injured) {
-                System.out.println("'I'm no medic, but I think I might be fairly doomed. Everything that can go wrong, apparently has.'");
+                printer.printNormal("'I'm no medic, but I think I might be fairly doomed. Everything that can go wrong, apparently has.'");
         } else if (hungry && thirsty) {
-                System.out.println("'My stomach grumbles, and my mouth is dry, but on the bright side bleeding out is not on the agenda.'");
+                printer.printNormal("'My stomach grumbles, and my mouth is dry, but on the bright side bleeding out is not on the agenda.'");
         } else if (hungry && injured) {
-                System.out.println("'Well, the stomach grumbles and the body is injured, but I don't need to drink for now.'");
+                printer.printNormal("'Well, the stomach grumbles and the body is injured, but I don't need to drink for now.'");
         } else if (thirsty && injured) {
-                System.out.println("'I'm incredibly thirsty and injured. Sadly I'm not feeling vampiric today, so drinking blood doesn't feel like a viable solution here. At least I'm not hungry too.'");
+                printer.printNormal("'I'm incredibly thirsty and injured. Sadly I'm not feeling vampiric today, so drinking blood doesn't feel like a viable solution here. At least I'm not hungry too.'");
         } else if (hungry) {
-                System.out.println("'I've got a case of the munchies, but overall doing good. No injuries of note and I'm not thirsty.'");
+                printer.printNormal("'I've got a case of the munchies, but overall doing good. No injuries of note and I'm not thirsty.'");
         } else if (thirsty) {
-                System.out.println("'I could go for a drink. I'm not all that hungry or hurt, so there's that.'");
+                printer.printNormal("'I could go for a drink. I'm not all that hungry or hurt, so there's that.'");
         } else if (injured) {
-                System.out.println("'I'm a bit, well, a lot more battered and beaten than I'd like to be, but I'm not hungry or thirsty.'");
+                printer.printNormal("'I'm a bit, well, a lot more battered and beaten than I'd like to be, but I'm not hungry or thirsty.'");
         }
     }
 }

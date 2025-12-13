@@ -1,19 +1,9 @@
-public class Character {
+public abstract class Character {
     protected boolean injured;
     protected boolean hungry;
     protected boolean thirsty;
     protected boolean dead = false;
-    public Character() {
-        injured = false;
-        hungry = false;
-        thirsty = false;
-    }
-
-    public Character(boolean injured, boolean hungry, boolean thirsty) {
-        this.injured = injured;
-        this.hungry = hungry;
-        this.thirsty = thirsty;
-    }
+    protected Printer printer = new Printer();
 
     public boolean getInjured() {
         return injured;
@@ -71,4 +61,7 @@ public class Character {
     public void makeDead() {
         dead = true;
     }
+
+
+    abstract void printCondition();
 }

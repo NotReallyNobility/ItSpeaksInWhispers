@@ -1,0 +1,3 @@
+String[] proSubj = {"he", "she", "they"};
+String[] proObj = {"him", "her", "them"};
+String[] proPossAdj = {"his", "hers", "theirs"};
